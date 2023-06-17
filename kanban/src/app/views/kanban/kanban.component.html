@@ -1,0 +1,36 @@
+<!-- <button (click) = "listar()">Listar</button> -->
+<div class="container">
+  <div class="content">
+    <span>Para fazer</span><br><br>
+
+    <ul>
+      <li *ngFor="let parafazer of tarefasFazer">
+      <span>{{parafazer.description}}</span><button (click) ="moveFront(parafazer.id,parafazer.title, parafazer.description ,'fazendo')">>></button>
+      </li>
+    </ul>
+  </div>
+  <div class="content">
+    <span>Fazendo</span><br><br>
+
+    <ul>
+      <li *ngFor="let fazendo of tarefasFazendo">
+        <span>{{fazendo.description}}</span><button (click) ="moveBack(fazendo.id,fazendo.title, fazendo.description ,'fazer')"><<</button>
+        <button (click) ="moveFront(fazendo.id,fazendo.title, fazendo.description ,'feito')">>></button>
+      </li>
+    </ul>
+  </div>
+  <div class="content">
+    <span>Feito</span><br><br>
+    <ul>
+      <li *ngFor="let feito of tarefasFeito">
+        <span>{{feito.description}}</span><button (click) ="moveBack(feito.id,feito.title, feito.description ,'fazendo')"><<</button>
+      </li>
+    </ul>
+  </div>
+</div>
+
+<input type="text" name="tarefa" id="" [(ngModel)] = "description">
+<select name="" id=""[(ngModel)] = 'tipoTarefa'>
+  <option *ngFor= "let tarefa of tipos" [value]="tarefa" >{{tarefa}}</option>
+</select>
+<br><button (click)="inserirTarefa(tipoTarefa)">Adicionar</button>
