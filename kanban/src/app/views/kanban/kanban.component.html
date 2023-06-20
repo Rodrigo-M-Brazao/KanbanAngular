@@ -1,36 +1,76 @@
-<!-- <button (click) = "listar()">Listar</button> -->
+<div class="container-todo">
+  <div class="example-form">
+    <mat-form-field class="example-full-width">
+      <mat-label>Tarefa</mat-label>
+      <input matInput autocomplete="off" type="text" name="tarefa" id="" [(ngModel)] = "description" placeholder="Tarefa">
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Tarefa</mat-label>
+        <mat-select name="" id="" [(ngModel)] = "tipoTarefa" >
+          <mat-option *ngFor= "let tarefa of tipos" value="{{tarefa}}">{{tarefa}}</mat-option>
+        </mat-select>
+    </mat-form-field><br>
+    <button (click)="inserirTarefa()" mat-raised-button color="primary">Adicionar</button>
+  </div>
+
+</div>
 <div class="container">
-  <div class="content">
-    <span>Para fazer</span><br><br>
+  <mat-card class="example-card fazer">
+    <mat-card-header class="card-header-todo">
+      <div mat-card-avatar class="example-header-image"></div>
+      <mat-card-title>Para fazer</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <ul>
+        <li *ngFor="let parafazer of tarefasFazer">
+        <p>{{parafazer.description}}
+          <button class ="btn-arrow" mat-button color="primary" (click) ="moveFront(parafazer.id,parafazer.title, parafazer.description ,'fazendo')">>></button>
+          <button (click) = "deletar(parafazer.id, 'fazer')" mat-fab color="primary">
+            <mat-icon>delete</mat-icon>
+          </button>
+        </p>
+        </li>
+      </ul>
+    </mat-card-content>
+  </mat-card>
 
-    <ul>
-      <li *ngFor="let parafazer of tarefasFazer">
-      <span>{{parafazer.description}}</span><button (click) ="moveFront(parafazer.id,parafazer.title, parafazer.description ,'fazendo')">>></button>
-      </li>
-    </ul>
-  </div>
-  <div class="content">
-    <span>Fazendo</span><br><br>
-
-    <ul>
-      <li *ngFor="let fazendo of tarefasFazendo">
-        <span>{{fazendo.description}}</span><button (click) ="moveBack(fazendo.id,fazendo.title, fazendo.description ,'fazer')"><<</button>
-        <button (click) ="moveFront(fazendo.id,fazendo.title, fazendo.description ,'feito')">>></button>
-      </li>
-    </ul>
-  </div>
-  <div class="content">
-    <span>Feito</span><br><br>
-    <ul>
-      <li *ngFor="let feito of tarefasFeito">
-        <span>{{feito.description}}</span><button (click) ="moveBack(feito.id,feito.title, feito.description ,'fazendo')"><<</button>
-      </li>
-    </ul>
-  </div>
+  <mat-card class="example-card  fazendo">
+    <mat-card-header class="card-header">
+      <div mat-card-avatar class="example-header-image"></div>
+      <mat-card-title>Fazendo</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <ul>
+        <li *ngFor="let fazendo of tarefasFazendo">
+          <p>{{fazendo.description}}
+            <button class ="btn-arrow" mat-button color="primary" (click) ="moveBack(fazendo.id,fazendo.title, fazendo.description ,'fazer')"><<</button>
+            <button class ="btn-arrow" mat-button color="primary" (click) ="moveFront(fazendo.id,fazendo.title, fazendo.description ,'feito')">>></button>
+            <button (click) = "deletar(fazendo.id, 'fazendo')" mat-fab color="primary">
+              <mat-icon>delete</mat-icon>
+            </button>
+          </p>
+        </li>
+      </ul>
+    </mat-card-content>
+  </mat-card>
+  <mat-card class="example-card feito">
+    <mat-card-header class="card-header-done">
+      <div mat-card-avatar class="example-header-image"></div>
+      <mat-card-title>Feito</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <ul>
+        <li *ngFor="let feito of tarefasFeito">
+          <p>{{feito.description}}
+            <button class ="btn-arrow" mat-button color="primary" (click) ="moveBack(feito.id,feito.title, feito.description ,'fazendo')"><<</button>
+            <button (click) = "deletar(feito.id, 'feito')" mat-fab color="primary" >
+              <mat-icon>delete</mat-icon>
+            </button>
+          </p>
+        </li>
+      </ul>
+    </mat-card-content>
+  </mat-card>
 </div>
 
-<input type="text" name="tarefa" id="" [(ngModel)] = "description">
-<select name="" id=""[(ngModel)] = 'tipoTarefa'>
-  <option *ngFor= "let tarefa of tipos" [value]="tarefa" >{{tarefa}}</option>
-</select>
-<br><button (click)="inserirTarefa(tipoTarefa)">Adicionar</button>
+

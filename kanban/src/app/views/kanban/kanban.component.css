@@ -14,8 +14,58 @@ ul{
 span{
   text-align: center;
   margin: 0 auto;
+  max-width: 80px;
 }
 div{
   text-align: center;
   justify-content: center;
+}
+.container-todo{
+  margin-bottom: 20px;
+}
+.container-todo button{
+  margin-top: 10px;
+}
+.container-todo input, select{
+  margin-right: 10px;
+}
+.container-todo select{
+  width: 100px;
+}
+.example-form{
+  margin-top: 10px;
+
+}
+/* .example-form mat-form-field{
+  padding-top: 10px;
+  height: 50px;
+} */
+.example-card{
+  width: 400px;
+  background-color: rgb(190, 200, 210);
+}
+*{
+  text-align: center;
+}
+.card-header-todo> .mat-mdc-card-avatar{
+  width: 105px;
+}
+.mat-mdc-card-avatar{
+  width: 125px;
+}
+.card-header-done > .mat-mdc-card-avatar{
+  width: 145px;
+}
+.example-full-width{
+  margin-right: 10px;
+}
+.feito{
+  background-color: rgb(195, 143, 190);
+
+}
+.fazendo{
+  background-color: rgb(155, 118, 118);
+}
+.card-header, .card-header-done, .card-header-todo{
+  background-color: rgb(161, 133, 185);
 }

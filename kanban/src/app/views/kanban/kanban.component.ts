@@ -47,10 +47,11 @@ export class KanbanComponent {
     const tipoDelete = this.tipos.indexOf(tipo) === 0 ? 'fazendo' : this.tipos.indexOf(tipo) === 1 ? 'feito': 'fazer';
     this.deletar(id, tipoDelete);
   }
-  inserirTarefa(tipo:string){
+  inserirTarefa(){
 
     this.tarefa.description = this.description;
-    this.service.inserir(this.tarefa, tipo).subscribe(tarefa => {
+    console.log(this.tipoTarefa);
+    this.service.inserir(this.tarefa, this.tipoTarefa).subscribe(tarefa => {
       this.listar();
     });
   }
@@ -68,4 +69,8 @@ export class KanbanComponent {
     })
   }
 
+  imprimir(){
+    console.log(this.tipoTarefa);
+    console.log('s');
+  }
 }
